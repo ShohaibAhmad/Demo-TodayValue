@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="User">
+        <menu>
+            <item
+                android:title="Login/Register"
+                android:icon="@drawable/ic_baseline_login_24"
+                android:id="@+id/login_register"/>
+
+            <item
+                android:title="Home"
+                android:icon="@drawable/ic_baseline_home_24"
+                android:id="@+id/home"/>
+
+            <item
+                android:title="Videos"
+                android:icon="@drawable/ic_baseline_ondemand_video_24"
+                android:id="@+id/video"/>
+
+            <item
+                android:title="Chat"
+                android:icon="@drawable/message"
+                android:id="@+id/message"/>
+
+            <item
+                android:title="Podcast"
+                android:icon="@drawable/podcast"
+                android:id="@+id/podcast"/>
+
+            <item
+                android:title="Short Videos"
+                android:icon="@drawable/short_video"
+                android:id="@+id/short_video"/>
+
+        </menu>
+    </item>
+
+    <item
+        android:title="Share">
+        <menu>
+            <item
+                android:title="Login"
+                android:icon="@drawable/podcast"
+                android:id="@+id/login6"/>
+
+            <item
+                android:title="Login"
+                android:icon="@drawable/podcast"
+                android:id="@+id/login7"/>
+
+            <item
+                android:title="Login"
+                android:icon="@drawable/podcast"
+                android:id="@+id/login8"/>
+
+            <item
+                android:title="Login"
+                android:icon="@drawable/podcast"
+                android:id="@+id/login9"/>
+
+            <item
+                android:title="Login"
+                android:icon="@drawable/podcast"
+                android:id="@+id/login10"/>
+
+        </menu>
+    </item>
+
+</menu>
