@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.promoteprovider.demotodayvalue.Fragments.HomeFragment;
@@ -76,22 +77,27 @@ public class MainActivity extends AppCompatActivity {
                 switch (model.getId()){
                     case HOME_ID:
                         transaction.replace(R.id.Main_Container,new HomeFragment());
+                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                         break;
 
                     case VIDEO_ID:
                         transaction.replace(R.id.Main_Container,new VideoFragment());
+                        Toast.makeText(MainActivity.this, "Videos", Toast.LENGTH_SHORT).show();
                         break;
 
                     case MESSAGE_ID:
                         transaction.replace(R.id.Main_Container,new MessageFragment());
+                        Toast.makeText(MainActivity.this, "Inbox", Toast.LENGTH_SHORT).show();
                         break;
 
                     case PODCAST_ID:
                         transaction.replace(R.id.Main_Container,new PodcastFragment());
+                        Toast.makeText(MainActivity.this, "Podcast", Toast.LENGTH_SHORT).show();
                         break;
 
                     case SHORT_ID:
                         transaction.replace(R.id.Main_Container,new Short_VideoFragment());
+                        Toast.makeText(MainActivity.this, "Short Videos", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 transaction.commit();
