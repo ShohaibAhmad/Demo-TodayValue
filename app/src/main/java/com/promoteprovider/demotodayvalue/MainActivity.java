@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case MESSAGE_ID:
                         transaction.replace(R.id.Main_Container,new MessageFragment());
-                        Toast.makeText(MainActivity.this, "Inbox", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Chat", Toast.LENGTH_SHORT).show();
                         break;
 
                     case PODCAST_ID:
