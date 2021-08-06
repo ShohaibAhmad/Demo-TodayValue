@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.promoteprovider.demotodayvalue.Fragments.HomeFragment;
 import com.promoteprovider.demotodayvalue.Fragments.MessageFragment;
 import com.promoteprovider.demotodayvalue.Fragments.PodcastFragment;
+import com.promoteprovider.demotodayvalue.Fragments.ProfileFragment;
 import com.promoteprovider.demotodayvalue.Fragments.Short_VideoFragment;
 import com.promoteprovider.demotodayvalue.Fragments.VideoFragment;
 
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView DrNavigation;
     private Toolbar toolBar;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    ConstraintLayout header;
 
 
     @Override
@@ -112,6 +115,18 @@ public class MainActivity extends AppCompatActivity {
         });
         //Change Header
         View view = DrNavigation.getHeaderView(0);
+
+        header = view.findViewById(R.id.header);
+        header.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.Main_Container,new ProfileFragment());
+                transaction.commit();
+                DR_Main.closeDrawer(GravityCompat.END);
+            }
+        });
+
 
         // start navigation All Code do note delete any code
         // meow find id
