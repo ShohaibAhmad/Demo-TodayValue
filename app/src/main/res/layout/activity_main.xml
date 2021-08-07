@@ -6,15 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+        android:id="@+id/meowBottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:mbn_backgroundBottomColor="@color/white"
+        app:mbn_circleColor="@color/white"
+        app:mbn_defaultIconColor="@color/main_color"
+        app:mbn_selectedIconColor="@color/main_color"
+        app:mbn_shadowColor="@color/main_color" />
+
+    <LinearLayout
+        android:id="@+id/Main_Container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/meowBottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintVertical_bias="1.0">
+
+    </LinearLayout>
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="end"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="end"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
@@ -33,47 +61,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        tools:openDrawer="end"
-        tools:ignore="SpeakableTextPresentCheck">
+        app:layout_constraintTop_toTopOf="@+id/Main_Container"
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:openDrawer="end">
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/DrNavigation"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            app:itemTextColor="@color/main_color"
-            app:itemIconTint="@color/main_color"
             app:headerLayout="@layout/header_user"
+            app:itemIconTint="@color/main_color"
+            app:itemTextColor="@color/main_color"
             app:menu="@menu/menu" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
-
-    <LinearLayout
-        android:id="@+id/Main_Container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/meowBottomNavigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </LinearLayout>
-
-    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
-        android:id="@+id/meowBottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:mbn_backgroundBottomColor="@color/white"
-        app:mbn_circleColor="@color/white"
-        app:mbn_defaultIconColor="@color/main_color"
-        app:mbn_selectedIconColor="@color/main_color"
-        app:mbn_shadowColor="@color/main_color" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

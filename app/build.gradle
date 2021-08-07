@@ -48,4 +48,8 @@ dependencies {
     //diagonal
     implementation 'com.github.florent37:diagonallayout:1.0.9'
 
+    //lottie
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:4.0.0"
+
 }

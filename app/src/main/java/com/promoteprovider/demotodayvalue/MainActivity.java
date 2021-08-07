@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         private final static int MESSAGE_ID = 3;
         private final static int PODCAST_ID = 4;
         private final static int SHORT_ID = 5;
+        private final static int s = 6;
     // start navigation Id
 
     //DR Navigation
@@ -120,10 +121,11 @@ public class MainActivity extends AppCompatActivity {
         header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DR_Main.closeDrawer(GravityCompat.END);
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.Main_Container,new ProfileFragment());
                 transaction.commit();
-                DR_Main.closeDrawer(GravityCompat.END);
+                meowBottomNavigation.show(s,true);
             }
         });
 
@@ -165,34 +167,34 @@ public class MainActivity extends AppCompatActivity {
         meowBottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
             @Override
             public Unit invoke(MeowBottomNavigation.Model model) {
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction1 = getSupportFragmentManager().beginTransaction();
                 switch (model.getId()){
                     case HOME_ID:
-                        transaction.replace(R.id.Main_Container,new HomeFragment());
+                        transaction1.replace(R.id.Main_Container,new HomeFragment());
                         Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                         break;
 
                     case VIDEO_ID:
-                        transaction.replace(R.id.Main_Container,new VideoFragment());
+                        transaction1.replace(R.id.Main_Container,new VideoFragment());
                         Toast.makeText(MainActivity.this, "Videos", Toast.LENGTH_SHORT).show();
                         break;
 
                     case MESSAGE_ID:
-                        transaction.replace(R.id.Main_Container,new MessageFragment());
+                        transaction1.replace(R.id.Main_Container,new MessageFragment());
                         Toast.makeText(MainActivity.this, "Chat", Toast.LENGTH_SHORT).show();
                         break;
 
                     case PODCAST_ID:
-                        transaction.replace(R.id.Main_Container,new PodcastFragment());
+                        transaction1.replace(R.id.Main_Container,new PodcastFragment());
                         Toast.makeText(MainActivity.this, "Podcast", Toast.LENGTH_SHORT).show();
                         break;
 
                     case SHORT_ID:
-                        transaction.replace(R.id.Main_Container,new Short_VideoFragment());
+                        transaction1.replace(R.id.Main_Container,new Short_VideoFragment());
                         Toast.makeText(MainActivity.this, "Short Videos", Toast.LENGTH_SHORT).show();
                         break;
                 }
-                transaction.commit();
+                transaction1.commit();
                 return null;
             }
         });
