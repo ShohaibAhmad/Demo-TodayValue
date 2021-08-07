@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
@@ -23,7 +22,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.promoteprovider.demotodayvalue.Fragments.HomeFragment;
 import com.promoteprovider.demotodayvalue.Fragments.MessageFragment;
 import com.promoteprovider.demotodayvalue.Fragments.PodcastFragment;
-import com.promoteprovider.demotodayvalue.Fragments.ProfileFragment;
 import com.promoteprovider.demotodayvalue.Fragments.Short_VideoFragment;
 import com.promoteprovider.demotodayvalue.Fragments.VideoFragment;
 
@@ -122,9 +120,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DR_Main.closeDrawer(GravityCompat.END);
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.Main_Container,new ProfileFragment());
-                transaction.commit();
+              Intent intent = new Intent(MainActivity.this,Profile.class);
+              startActivity(intent);
                 meowBottomNavigation.show(s,true);
             }
         });
