@@ -9,17 +9,15 @@ import android.widget.TextView;
 
 public class Welcome extends AppCompatActivity {
 
-    TextView button;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
 
-        button=findViewById(R.id.button);
+        TextView button1=findViewById(R.id.button1);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

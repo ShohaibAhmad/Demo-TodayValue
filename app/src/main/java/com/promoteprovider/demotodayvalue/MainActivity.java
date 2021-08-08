@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 switch (item.getItemId()){
                     case R.id.login_register:
-                        Intent intent = new Intent(MainActivity.this,Welcome.class);
+                        Intent intent = new Intent(MainActivity.this,LogIn.class);
                         startActivity(intent);
                         Toast.makeText(MainActivity.this, "Login/Register", Toast.LENGTH_SHORT).show();
                         break;

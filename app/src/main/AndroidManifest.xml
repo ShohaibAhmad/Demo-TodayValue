@@ -27,6 +27,41 @@
             android:exported="true" >
 
         </activity>
+
+        <activity android:name=".SignUp_part_1"
+            android:parentActivityName=".Welcome"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".SignUp_part_2"
+            android:parentActivityName=".SignUp_part_1"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Profile"
+            android:parentActivityName=".MainActivity"
+            android:exported="true">
+
+        </activity>
+        <activity android:name=".Otp_Number"
+            android:parentActivityName=".SignUp_part_2"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".Otp_Verification"
+            android:parentActivityName=".Otp_Number"
+            android:exported="true">
+
+        </activity>
+
+        <activity android:name=".LogIn"
+            android:parentActivityName=".MainActivity"
+            android:exported="true">
+
+        </activity>
     </application>
 
 </manifest>
