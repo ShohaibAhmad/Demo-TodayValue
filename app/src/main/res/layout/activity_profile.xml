@@ -113,12 +113,68 @@
                 android:text="Android Apps Developer"
                 android:textColor="@color/main_color"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="normal|bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/goToWid"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/profile_wid"
+                    android:orientation="horizontal"
+                    android:paddingStart="15dp"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Total Coins"
+                            android:textColor="@color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="100000"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        diagonal:srcCompat="@drawable/dollar" />
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:tint="@color/white"
+                        diagonal:srcCompat="@drawable/ic_baseline_arrow_forward_24" />
+
+                </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -182,6 +238,7 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:orientation="vertical"
@@ -194,8 +251,8 @@
                                     android:gravity="center"
                                     android:text="Post"
                                     android:textColor="@color/main_color"
-                                    android:textSize="20sp"
-                                    android:textStyle="italic" />
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/textView14"
@@ -204,8 +261,8 @@
                                     android:gravity="center"
                                     android:text="1000"
                                     android:textColor="@color/main_color"
-                                    android:textSize="24sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="20sp"
+                                    android:textStyle="normal|italic" />
 
                             </LinearLayout>
 
@@ -218,6 +275,7 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:orientation="vertical"
                                 android:weightSum="2">
@@ -229,8 +287,8 @@
                                     android:gravity="center"
                                     android:text="Video"
                                     android:textColor="@color/main_color"
-                                    android:textSize="20sp"
-                                    android:textStyle="italic" />
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/textView104"
@@ -239,8 +297,8 @@
                                     android:gravity="center"
                                     android:text="1000"
                                     android:textColor="@color/main_color"
-                                    android:textSize="24sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="20sp"
+                                    android:textStyle="normal|italic" />
                             </LinearLayout>
 
                             <View
@@ -252,6 +310,7 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:orientation="vertical"
                                 android:weightSum="2">
@@ -263,8 +322,8 @@
                                     android:gravity="center"
                                     android:text="Podcast"
                                     android:textColor="@color/main_color"
-                                    android:textSize="20sp"
-                                    android:textStyle="italic" />
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/textView1004"
@@ -273,8 +332,8 @@
                                     android:gravity="center"
                                     android:text="1000"
                                     android:textColor="@color/main_color"
-                                    android:textSize="24sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="20sp"
+                                    android:textStyle="normal|italic" />
                             </LinearLayout>
 
                             <View
@@ -286,6 +345,7 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
+                                android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:orientation="vertical"
                                 android:weightSum="2">
@@ -297,8 +357,8 @@
                                     android:gravity="center"
                                     android:text="Short"
                                     android:textColor="@color/main_color"
-                                    android:textSize="20sp"
-                                    android:textStyle="italic" />
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/textView10004"
@@ -307,8 +367,8 @@
                                     android:gravity="center"
                                     android:text="1000"
                                     android:textColor="@color/main_color"
-                                    android:textSize="24sp"
-                                    android:textStyle="bold" />
+                                    android:textSize="20sp"
+                                    android:textStyle="normal|italic" />
                             </LinearLayout>
                         </LinearLayout>
 
