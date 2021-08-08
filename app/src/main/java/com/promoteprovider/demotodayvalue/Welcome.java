@@ -8,20 +8,19 @@ import android.view.View;
 import android.widget.TextView;
 
 public class Welcome extends AppCompatActivity {
-
+        TextView next1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
 
-        TextView button1=findViewById(R.id.button1);
+        next1 = findViewById(R.id.Next1);
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        next1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent=new Intent(Welcome.this,SignUp_part_1.class);
+                Intent intent = new Intent(Welcome.this,SignUp_part_1.class);
                 startActivity(intent);
             }
         });
