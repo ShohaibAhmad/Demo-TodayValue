@@ -23,8 +23,6 @@ public class SignUp_part_1 extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_part1);
 
 
-
-
         TextView button1=findViewById(R.id.button1);
 
         button1.setOnClickListener(new View.OnClickListener() {
@@ -35,10 +33,6 @@ public class SignUp_part_1 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
 
 
 

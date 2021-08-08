@@ -14,9 +14,6 @@ public class Otp_Number extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp_number);
 
-
-
-
         TextView verify=findViewById(R.id.verify);
 
         verify.setOnClickListener(new View.OnClickListener() {
