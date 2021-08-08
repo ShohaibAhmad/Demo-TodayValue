@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         private final static int MESSAGE_ID = 3;
         private final static int PODCAST_ID = 4;
         private final static int SHORT_ID = 5;
-        private final static int s = 6;
     // start navigation Id
 
     //DR Navigation
@@ -122,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
                 DR_Main.closeDrawer(GravityCompat.END);
               Intent intent = new Intent(MainActivity.this,Profile.class);
               startActivity(intent);
-                meowBottomNavigation.show(s,true);
             }
         });
 
