@@ -15,9 +15,9 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
 
-        TextView button1=findViewById(R.id.button1);
+        TextView Next1=findViewById(R.id.Next1);
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        Next1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

@@ -12,56 +12,45 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoTodayValue" >
         <activity
+            android:name=".withdraw"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".Welcome"
-            android:parentActivityName=".MainActivity"
-            android:exported="true" >
-
-        </activity>
-
-        <activity android:name=".SignUp_part_1"
-            android:parentActivityName=".Welcome"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".SignUp_part_2"
-            android:parentActivityName=".SignUp_part_1"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Profile"
-            android:parentActivityName=".MainActivity"
-            android:exported="true">
-
-        </activity>
-        <activity android:name=".Otp_Number"
-            android:parentActivityName=".SignUp_part_2"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".Otp_Verification"
-            android:parentActivityName=".Otp_Number"
-            android:exported="true">
-
-        </activity>
-
-        <activity android:name=".LogIn"
-            android:parentActivityName=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SignUp_part_1"
+            android:exported="true"
+            android:parentActivityName=".Welcome" />
+        <activity
+            android:name=".SignUp_part_2"
+            android:exported="true"
+            android:parentActivityName=".SignUp_part_1" />
+        <activity
+            android:name=".Profile"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Otp_Number"
+            android:exported="true"
+            android:parentActivityName=".SignUp_part_2" />
+        <activity
+            android:name=".Otp_Verification"
+            android:exported="true"
+            android:parentActivityName=".Otp_Number" />
+        <activity
+            android:name=".LogIn"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

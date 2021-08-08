@@ -82,6 +82,7 @@
             android:background="@drawable/border_style_2"
             android:gravity="center"
             android:text="Log In"
+            android:textStyle="bold"
             android:textColor="#FFF"
             android:textSize="25dp" />
 
