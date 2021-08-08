@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Otp_Number">
+
+
+    <TextView
+        android:id="@+id/headline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="115dp"
+        android:layout_marginBottom="45dp"
+        android:background="@drawable/border_style"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Verify Your Phone Number"
+        android:textColor="#FFF"
+        android:textSize="17dp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_below="@id/headline"
+        android:id="@+id/OtpNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginRight="7dp"
+        android:orientation="horizontal">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_style_4"
+            android:drawableStart="@drawable/ic_baseline_phone_24"
+            android:drawablePadding="5dp"
+            android:hint="Phone Number"
+            android:paddingStart="5dp"
+            android:inputType="number"
+            android:textColorHint="#15205E" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/verify"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/OtpNumber"
+        android:layout_gravity="center"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border_style_2"
+        android:gravity="center"
+        android:text="Verify Now"
+        android:textColor="#FFF"
+        android:textSize="22dp" />
+
+
+
+
+</RelativeLayout>

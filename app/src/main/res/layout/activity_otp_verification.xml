@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Otp_Verification">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/border_style"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Otp Verification"
+            android:textColor="#FFF"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingStart="30dp"
+            android:hint="Enter Otp Code here"
+            android:textColorHint="#15205E"
+            android:layout_margin="30dp"
+            android:background="@drawable/border_style_4"
+            />
+
+        <TextView
+            android:id="@+id/button3"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Didn't receive the otp?"
+            android:textColor="#15205E"
+            android:textSize="15dp" />
+
+
+        <TextView
+            android:id="@+id/button4"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Resend otp"
+            android:textColor="#0C0D0E"
+            android:textSize="15dp" />
+
+
+
+
+
+        <TextView
+            android:id="@+id/button2"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/border_style_3"
+            android:gravity="center"
+            android:text="Verify and Continue"
+            android:textColor="#FFF"
+            android:textSize="20dp" />
+
+
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

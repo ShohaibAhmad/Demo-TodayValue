@@ -52,4 +52,12 @@ dependencies {
     def lottieVersion = "3.4.0"
     implementation "com.airbnb.android:lottie:4.0.0"
 
+
+    //  country code picker dependency start
+
+    implementation 'com.hbb20:ccp:2.3.1'
+
+    // country code end
+
+
 }
