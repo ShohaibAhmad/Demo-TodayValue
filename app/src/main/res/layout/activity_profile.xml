@@ -190,7 +190,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView3">
+                      >
 
                         <Button
                             android:id="@+id/button2"
@@ -238,44 +238,6 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:weightSum="2">
-
-                                <TextView
-                                    android:id="@+id/textView15"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="Post"
-                                    android:textColor="@color/main_color"
-                                    android:textSize="24sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:id="@+id/textView14"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:gravity="center"
-                                    android:text="1000"
-                                    android:textColor="@color/main_color"
-                                    android:textSize="20sp"
-                                    android:textStyle="normal|italic" />
-
-                            </LinearLayout>
-
-                            <View
-                                android:id="@+id/view7"
-                                android:layout_width="3dp"
-                                android:layout_height="50dp"
-                                android:background="@color/main_color" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:orientation="vertical"
                                 android:weightSum="2">
@@ -287,7 +249,7 @@
                                     android:gravity="center"
                                     android:text="Video"
                                     android:textColor="@color/main_color"
-                                    android:textSize="24sp"
+                                    android:textSize="20sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -297,7 +259,41 @@
                                     android:gravity="center"
                                     android:text="1000"
                                     android:textColor="@color/main_color"
+                                    android:textSize="16sp"
+                                    android:textStyle="normal|italic" />
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/view7"
+                                android:layout_width="3dp"
+                                android:layout_height="50dp"
+                                android:background="@color/main_color" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:weightSum="2">
+
+                                <TextView
+                                    android:id="@+id/textView05"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="Video"
+                                    android:textColor="@color/main_color"
                                     android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textView04"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:text="1000"
+                                    android:textColor="@color/main_color"
+                                    android:textSize="16sp"
                                     android:textStyle="normal|italic" />
                             </LinearLayout>
 
@@ -310,7 +306,6 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:orientation="vertical"
                                 android:weightSum="2">
@@ -322,7 +317,7 @@
                                     android:gravity="center"
                                     android:text="Podcast"
                                     android:textColor="@color/main_color"
-                                    android:textSize="24sp"
+                                    android:textSize="20sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -332,7 +327,7 @@
                                     android:gravity="center"
                                     android:text="1000"
                                     android:textColor="@color/main_color"
-                                    android:textSize="20sp"
+                                    android:textSize="16sp"
                                     android:textStyle="normal|italic" />
                             </LinearLayout>
 
@@ -345,7 +340,6 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
-                                android:layout_margin="5dp"
                                 android:layout_weight="1"
                                 android:orientation="vertical"
                                 android:weightSum="2">
@@ -357,7 +351,7 @@
                                     android:gravity="center"
                                     android:text="Short"
                                     android:textColor="@color/main_color"
-                                    android:textSize="24sp"
+                                    android:textSize="20sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -367,7 +361,7 @@
                                     android:gravity="center"
                                     android:text="1000"
                                     android:textColor="@color/main_color"
-                                    android:textSize="20sp"
+                                    android:textSize="16sp"
                                     android:textStyle="normal|italic" />
                             </LinearLayout>
                         </LinearLayout>
