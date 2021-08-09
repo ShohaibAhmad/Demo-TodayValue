@@ -12,6 +12,7 @@
 
     //main color
     <color name="main_color">#15205E</color>
+    <color name="main_color1">#D315205E</color>
     <color name="greyTrans">#6A000000</color>
 
 </resources>

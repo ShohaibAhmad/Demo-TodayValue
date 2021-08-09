@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //toolBar
         toolBar = findViewById(R.id.toolBar);
         DrNavigation = findViewById(R.id.DrNavigation);
         DR_Main = findViewById(R.id.DR_Main);
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolBar);
         //toggle
         actionBarDrawerToggle = new ActionBarDrawerToggle(this,DR_Main,toolBar,R.string.open,R.string.close);
+        actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.main_color));
         DR_Main.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
