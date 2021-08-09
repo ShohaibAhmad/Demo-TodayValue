@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.HomeFragment">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainLayout"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:background="@drawable/v_t_bac"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -24,7 +25,7 @@
             android:id="@+id/profile_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="5dp"
             android:src="@drawable/profile"
             app:civ_border_color="@color/white"
             app:civ_border_width="2dp"
