@@ -2,30 +2,27 @@ package com.promoteprovider.demotodayvalue;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class Otp_Verification extends AppCompatActivity {
+public class Reward extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_otp_verification);
+        setContentView(R.layout.activity_reward);
 
-        TextView otp=findViewById(R.id.otp);
 
-        otp.setOnClickListener(new View.OnClickListener() {
+        TextView request=findViewById(R.id.request);
+
+        request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent=new Intent(Otp_Verification.this,Reward.class);
-                startActivity(intent);
+                Toast.makeText(Reward.this, "Request SuccesFull ,Please wait 2 days", Toast.LENGTH_SHORT).show();
             }
         });
-
-
 
     }
 }
