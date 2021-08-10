@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.promoteprovider.demotodayvalue.Fragments.HomeFragment;
 import com.promoteprovider.demotodayvalue.Fragments.MessageFragment;
 import com.promoteprovider.demotodayvalue.Fragments.PodcastFragment;
@@ -105,6 +106,14 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.short_video:
                         transaction.replace(R.id.Main_Container,new Short_VideoFragment());
                         Toast.makeText(MainActivity.this, "Short Videos", Toast.LENGTH_SHORT).show();
+                        break; 
+                        
+                    case R.id.logout:
+                        Toast.makeText(MainActivity.this, "logout", Toast.LENGTH_SHORT).show();
+                        FirebaseAuth.getInstance().signOut();
+                        Intent my = new Intent(MainActivity.this,LogIn.class);
+                        startActivity(my);
+                        finish();
                         break;
                 }
                 transaction.commit();

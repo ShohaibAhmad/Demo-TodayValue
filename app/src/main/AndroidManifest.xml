@@ -3,6 +3,7 @@
     package="com.promoteprovider.demotodayvalue">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -35,10 +36,6 @@
             android:name=".SignUp_part_1"
             android:exported="true"
             android:parentActivityName=".Welcome" />
-        <activity
-            android:name=".SignUp_part_2"
-            android:exported="true"
-            android:parentActivityName=".SignUp_part_1" />
         <activity
             android:name=".Profile"
             android:exported="true"
