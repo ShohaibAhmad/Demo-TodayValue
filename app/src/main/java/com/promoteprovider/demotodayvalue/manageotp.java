@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class manageotp extends AppCompatActivity
@@ -30,6 +32,7 @@ public class manageotp extends AppCompatActivity
     String otpid;
     FirebaseAuth mAuth;
     ProgressBar otpV;
+    TextView timer;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -40,7 +43,19 @@ public class manageotp extends AppCompatActivity
         t2=findViewById(R.id.otpCode);
         b2= findViewById(R.id.otpSend);
         otpV= findViewById(R.id.otpV);
+        timer= findViewById(R.id.timer);
         mAuth=FirebaseAuth.getInstance();
+
+        new CountDownTimer(60000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                timer.setText("Wait For OTP Code: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                timer.setText("done!");
+            }
+        }.start();
 
         initiateotp();
 

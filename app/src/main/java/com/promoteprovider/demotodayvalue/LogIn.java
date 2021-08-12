@@ -1,22 +1,22 @@
 package com.promoteprovider.demotodayvalue;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.InputType;
 import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +25,7 @@ public class LogIn extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseAuth auth;
     EditText email,pass;
-
+    TextView FP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class LogIn extends AppCompatActivity {
         email=findViewById(R.id.email);
         pass=findViewById(R.id.pass);
         TextView NewAccount=findViewById(R.id.NewAccount);
+        FP = findViewById(R.id.resetBtn);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +90,41 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
+        FP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText resetPass = new EditText(view.getContext());
+                AlertDialog.Builder passReset = new AlertDialog.Builder(view.getContext());
+                passReset.setTitle("Reset Password ?");
+                passReset.setMessage("Enter Your Email to Reset the Password Link.");
+                passReset.setView(resetPass);
+                passReset.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String mail = resetPass.getText().toString();
+                        auth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(LogIn.this, "Reset Link Sent to Your Email.", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(LogIn.this, "Error ! Reset Link is Not Sent"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+
+                passReset.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                passReset.create().show();
+            }
+        });
 //     Password Hide Show
 //        button.setOnTouchListener(new View.OnTouchListener() {
 //            public boolean onTouch(View v, MotionEvent event) {

@@ -44,21 +44,33 @@
                 android:layout_margin="30dp"
                 android:background="@drawable/border_style_4"
                 android:gravity="center|left"
-                android:hint="Enter Otp Code here"
+                android:hint="Enter OTP Code here"
                 android:paddingStart="30dp"
                 android:textColorHint="#15205E" />
 
             <TextView
-                android:id="@+id/button3"
+                android:id="@+id/timer"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="Didn't receive the otp?"
-                android:textColor="#15205E"
-                android:textSize="15dp" />
+                android:text="Wait For OTP Code: "
+                android:textStyle="bold"
+                android:textColor="@color/main_color"
+                android:textSize="20dp" />
 
+
+            <TextView
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Didn't receive the otp?"
+                android:textColor="@color/main_color"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/button4"
