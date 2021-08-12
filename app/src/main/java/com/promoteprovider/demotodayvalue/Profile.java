@@ -18,7 +18,7 @@ public class Profile extends AppCompatActivity {
         goToWid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Profile.this,withdraw.class);
+                Intent intent = new Intent(Profile.this,Reward.class);
                 startActivity(intent);
             }
         });

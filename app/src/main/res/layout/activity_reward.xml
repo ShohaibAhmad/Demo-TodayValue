@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Reward">
+
+
+    <LinearLayout
+        android:id="@+id/Coin"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/edit_border"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:weightSum="3"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/reward2"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="left"
+                android:text="5000"
+                android:textColor="#15205E"
+                android:textSize="50dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+            />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Minimum withdraw 50000 coin"
+            android:textColor="#15205E"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/Coin"
+        android:id="@+id/paypal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+         android:layout_marginLeft="20dp"
+            android:text="Paypal"
+            android:textSize="27dp"
+            android:textStyle="bold"
+            android:textColor="#15205E"
+
+            />
+
+        <EditText
+            android:id="@+id/FirstName"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/edit_border"
+            android:drawableStart="@drawable/ic_baseline_email_24"
+            android:drawablePadding="15dp"
+            android:hint=" Enter  your Paypal email"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textColorHint="#15205E" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_below="@id/paypal"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="27dp"
+            android:text="Bkash"
+            android:textStyle="bold"
+            android:textColor="#15205E"
+            android:layout_marginLeft="20dp"
+            />
+
+        <EditText
+            android:id="@+id/Bkash"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="15dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/edit_border"
+            android:drawableStart="@drawable/ic_baseline_phone_24"
+            android:drawablePadding="15dp"
+            android:hint="Enter your Bkash Number"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textColorHint="#15205E" />
+
+        <TextView
+            android:id="@+id/request"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/border_style"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="Send Request"
+            android:textColor="#FFF"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
