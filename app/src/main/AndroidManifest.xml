@@ -12,20 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoTodayValue">
         <activity
-<<<<<<< HEAD
             android:name=".manageotp"
             android:exported="true">
 
 
         </activity>
         <activity
-=======
->>>>>>> 3c76e63fe09371ea07dc52633f711c52f1203dee
+
             android:name=".UploadActivity"
             android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".withdraw"
+            android:name=".Reward"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
@@ -44,22 +42,12 @@
             android:name=".SignUp_part_1"
             android:exported="true"
             android:parentActivityName=".Welcome" />
-        <activity
-            android:name=".SignUp_part_2"
-            android:exported="true"
-            android:parentActivityName=".SignUp_part_1" />
+
         <activity
             android:name=".Profile"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".Otp_Number"
-            android:exported="true"
-            android:parentActivityName=".SignUp_part_2" />
-        <activity
-            android:name=".Otp_Verification"
-            android:exported="true"
-            android:parentActivityName=".Otp_Number" />
+
         <activity
             android:name=".LogIn"
             android:exported="true"
