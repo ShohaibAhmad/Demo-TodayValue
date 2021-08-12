@@ -1,36 +1,148 @@
 package com.promoteprovider.demotodayvalue;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.TextView;
 
-import java.util.Calendar;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class SignUp_part_1 extends AppCompatActivity {
 
-    private DatePickerDialog datePickerDialog;
-    private Button dateButton;
+
+    //auth
+    EditText LastName,FirstName,dBirth,email,pass;
+    ProgressBar progressBar2;
+    FirebaseFirestore firestore;
+    FirebaseAuth auth;
+    TextView dataSend;
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_part1);
+        firestore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+        //auth
+            progressBar2 = findViewById(R.id.progressBar2);
+            FirstName =findViewById(R.id.FirstName);
+            LastName = findViewById(R.id.LastName);
+            dBirth = findViewById(R.id.dBirth);
+            email = findViewById(R.id.email);
+            pass = findViewById(R.id.pass);
+            //dataSend
+            dataSend = findViewById(R.id.dataSend);
 
+            //Already Logged
+        if (auth.getCurrentUser() != null){
+            Intent intent = new Intent(SignUp_part_1.this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
-        TextView button1=findViewById(R.id.button1);
-
-        button1.setOnClickListener(new View.OnClickListener() {
+            //click to send user data
+        dataSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //int
+                String fName = FirstName.getText().toString();
+                String lName = LastName.getText().toString();
+                String dBarth = dBirth.getText().toString();
+                String emailF = email.getText().toString();
+                String passF = pass.getText().toString();
 
-                Intent intent=new Intent(SignUp_part_1.this,SignUp_part_2.class);
-                startActivity(intent);
+                //Auth
+                if (TextUtils.isEmpty(fName)){
+                    FirstName.setError("First Name is required!");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(lName)){
+                    LastName.setError("Last Name is required!");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(dBarth)){
+                    dBirth.setError("Date Of Birth is required!");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(emailF)){
+                    email.setError("Email is required!");
+                    return;
+                }
+
+                if (TextUtils.isEmpty(passF)){
+                    pass.setError("Password is required!");
+                    return;
+                }
+
+                if (passF.length() < 6){
+                    pass.setError("Password must be >= 6 Character!");
+                    return;
+                }
+                progressBar2.setVisibility(View.VISIBLE);
+
+
+                //map
+                Map<String,Object> data = new HashMap<>();
+                data.put("fName",fName);
+                data.put("lName",lName);
+                data.put("dBarth",dBarth);
+                data.put("emailF",emailF);
+                data.put("passF",passF);
+
+
+
+                firestore.collection("Users").document().set(data)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(SignUp_part_1.this, "Registration Successfully!", Toast.LENGTH_SHORT).show();
+                                auth.createUserWithEmailAndPassword(emailF,passF).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                        if (task.isSuccessful()){
+                                            Intent intent = new Intent(SignUp_part_1.this,Otp_Number.class);
+                                            startActivity(intent);
+                                        }
+                                        else {
+                                            Toast.makeText(SignUp_part_1.this, "Error !" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            progressBar2.setVisibility(View.GONE);
+                                        }
+                                    }
+                                });
+
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(SignUp_part_1.this, "User Created Fail", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
 
@@ -38,99 +150,6 @@ public class SignUp_part_1 extends AppCompatActivity {
 
 
 
-
-
-        /////////////////////////////////Date picker ___date of birth///////////////
-
-        initDatePicker();
-
-        dateButton=findViewById(R.id.dateButton);
-        dateButton.setText(getTodaysDate());
     }
 
-    private String getTodaysDate() {
-
-        Calendar cal=Calendar.getInstance();
-        int year =cal.get(Calendar.YEAR);
-        int month =cal.get(Calendar.MONTH);
-        month = month + 1;
-        int day =cal.get(Calendar.DAY_OF_MONTH);
-        return makeDateString(day,month,year);
-
-
-    }
-
-    private void initDatePicker()
-
-    {
-        DatePickerDialog.OnDateSetListener dateSetListener=new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-
-                month=month + 1;
-                String date =makeDateString(day, month, year);
-                dateButton.setText(date);
-
-            }
-        };
-
-        Calendar cal=Calendar.getInstance();
-        int year =cal.get(Calendar.YEAR);
-        int month =cal.get(Calendar.MONTH);
-        int day =cal.get(Calendar.DAY_OF_MONTH);
-
-        int style = AlertDialog.THEME_HOLO_LIGHT;
-        datePickerDialog=new DatePickerDialog(this,style,dateSetListener,year,month,day);
-
-    }
-
-    private String makeDateString(int day, int month, int year)
-    {
-        return getMonthFormat(month) + " " + day + " "+ year;
-    }
-
-    private String getMonthFormat(int month)
-
-    {
-        if(month == 1)
-            return "JAN";
-
-        if(month == 2)
-            return "FEB";
-
-        if(month == 3)
-            return "MAR";
-
-        if(month == 4)
-            return "APR";
-        if(month == 5)
-            return "MAY";
-
-        if(month == 6)
-            return "JUN";
-
-        if(month == 7)
-            return "JUL";
-
-        if(month == 8)
-            return "AUG";
-
-        if(month == 9)
-            return "SEP";
-
-        if(month == 10)
-            return "OCT";
-
-        if(month == 11)
-            return "NOV";
-
-        if(month == 12)
-            return "DEC";
-        return "JAN";
-    }
-
-    public void OpenDatePicker(View view) {
-
-        datePickerDialog.show();;
-    }
 }

@@ -67,5 +67,14 @@
 
         </menu>
     </item>
+    <item
+        android:title="Logout">
+        <menu>
+            <item
+                android:title="Logout"
+                android:icon="@drawable/logout"
+                android:id="@+id/logout"/>
 
+        </menu>
+    </item>
 </menu>

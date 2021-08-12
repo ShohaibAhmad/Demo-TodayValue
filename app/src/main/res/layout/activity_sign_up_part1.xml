@@ -6,151 +6,199 @@
     android:layout_height="match_parent"
     tools:context=".SignUp_part_1">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="-33dp"
-        tools:layout_editor_absoluteY="68dp">
-
-
-        //////////////////name/////////
-
-        <LinearLayout
-            android:id="@+id/Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:background="@drawable/border_style"
-                android:gravity="center"
-                android:padding="15dp"
-                android:text="Enter Your First and Last Name"
-                android:textColor="#FFF"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/FirstName"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="15dp"
-                android:layout_marginTop="100dp"
-                android:background="@drawable/edit_border"
-                android:drawableStart="@drawable/ic_baseline_person_24"
-                android:drawablePadding="15dp"
-                android:hint="First Name"
-                android:inputType="textPersonName"
-                android:padding="15dp"
-                android:textColorHint="#15205E" />
-
-
-            <EditText
-                android:id="@+id/LastName"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="15dp"
-                android:layout_marginTop="100dp"
-                android:background="@drawable/edit_border"
-                android:drawableStart="@drawable/ic_baseline_person_24"
-                android:drawablePadding="15dp"
-                android:hint="Last Name"
-                android:inputType="textPersonName"
-                android:padding="15dp"
-
-                android:textColorHint="#15205E" />
-
-
-        </LinearLayout>
-
-
-        //////////////////Name End////////
-
-
-        //////////Date of birth //////////
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/Name"
-            android:layout_marginTop="25dp"
             android:orientation="vertical">
 
-
-            <TextView
-
+            <LinearLayout
+                android:id="@+id/fullName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:background="@drawable/border_style"
-                android:gravity="center"
-                android:padding="15dp"
-                android:text="Enter Your Date of Birth"
-                android:textColor="#FFF"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/ShowDate"
-                android:layout_width="wrap_content"
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/border_style"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Enter Your First and Last Name"
+                    android:textColor="#FFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/FirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="15dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/edit_border"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
+                    android:drawablePadding="15dp"
+                    android:hint="First Name"
+                    android:inputType="textPersonName|textAutoComplete"
+                    android:padding="15dp"
+                    android:textColorHint="#15205E" />
+
+
+                <EditText
+                    android:id="@+id/LastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="15dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/edit_border"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
+                    android:drawablePadding="15dp"
+                    android:hint="Last Name"
+                    android:inputType="textPersonName|textAutoComplete"
+                    android:padding="15dp"
+
+                    android:textColorHint="#15205E" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:text="Select your date of birth"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:textColor="#15205E"
-
-                />
+                android:orientation="vertical">
 
 
-            <Button
-                android:id="@+id/dateButton"
-                android:layout_width="300dp"
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/border_style"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Enter Your Date of Birth"
+                    android:textColor="#FFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+
+                <EditText
+                    android:id="@+id/dBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="15dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/edit_border"
+                    android:drawableStart="@drawable/ic_baseline_person_24"
+                    android:drawablePadding="15dp"
+                    android:hint="Enter Birth 1/1/2000"
+                    android:inputType="textPersonName|textAutoComplete"
+                    android:padding="15dp"
+
+                    android:textColorHint="#15205E" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jan  01  2021"
-                android:textSize="22sp"
-                android:textColor="#15205E"
-                style="?android:spinnerStyle"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:padding="10dp"
-                android:drawableStart="@drawable/ic_baseline_calendar_today_24"
-                android:drawablePadding="20dp"
-                android:onClick="OpenDatePicker"
-                />
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
 
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/border_style"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Enter Your Email Address"
+                    android:textColor="#FFF"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/button1"
-                android:layout_width="250dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/border_style_2"
-                android:gravity="center"
-                android:text="Next"
-                android:textColor="#FFF"
-                android:textSize="25dp" />
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="15dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/edit_border"
+                    android:drawableStart="@drawable/ic_baseline_email_24"
+                    android:drawablePadding="15dp"
+                    android:hint="Email Address"
+                    android:inputType="textAutoComplete|textEmailAddress"
+                    android:padding="15dp"
+                    android:textColorHint="#15205E" />
 
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/border_style"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Enter a strong password"
+                    android:textColor="#FFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="15dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@drawable/edit_border"
+                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:drawablePadding="15dp"
+                    android:hint="Password"
+                    android:inputType="textPassword|textAutoComplete"
+                    android:padding="15dp"
+
+                    android:textColorHint="#15205E" />
+
+
+                <TextView
+                    android:id="@+id/dataSend"
+                    android:layout_width="250dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/border_style_2"
+                    android:gravity="center"
+                    android:text="Next"
+                    android:textColor="#FFF"
+                    android:textSize="25dp" />
+
+
+            </LinearLayout>
 
         </LinearLayout>
+    </ScrollView>
 
-
-
-
-
-    </RelativeLayout>
-
-
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:indeterminateTint="@color/main_color"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

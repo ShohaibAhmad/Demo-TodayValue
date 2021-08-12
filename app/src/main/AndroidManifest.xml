@@ -12,12 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoTodayValue">
         <activity
-            android:name=".Reward"
+            android:name=".UploadActivity"
+            android:parentActivityName=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".UploadActivity"
-            android:exported="true"
-            android:parentActivityName=".MainActivity" />
+            android:name=".withdraw"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
