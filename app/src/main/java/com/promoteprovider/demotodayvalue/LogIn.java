@@ -33,7 +33,11 @@ public class LogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         //Auth
         auth = FirebaseAuth.getInstance();
-
+        if (auth.getCurrentUser() != null){
+            Intent intent = new Intent(LogIn.this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         TextView login=findViewById(R.id.login);
         progressBar=findViewById(R.id.progressBar);

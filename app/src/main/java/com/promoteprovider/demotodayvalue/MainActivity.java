@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.promoteprovider.demotodayvalue.Fragments.HomeFragment;
 import com.promoteprovider.demotodayvalue.Fragments.MessageFragment;
 import com.promoteprovider.demotodayvalue.Fragments.PodcastFragment;
@@ -50,11 +51,20 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     ConstraintLayout header;
 
+    //firebase
+    FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            if (firebaseUser == null){
+                Toast.makeText(MainActivity.this, "If You Want To Like or Comment And Upload Something Please Sign Up", Toast.LENGTH_SHORT).show();
+            }
+
+
         toolBar = findViewById(R.id.toolBar);
         DrNavigation = findViewById(R.id.DrNavigation);
         DR_Main = findViewById(R.id.DR_Main);
