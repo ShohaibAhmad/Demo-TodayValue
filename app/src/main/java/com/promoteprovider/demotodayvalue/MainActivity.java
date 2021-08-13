@@ -1,6 +1,7 @@
 package com.promoteprovider.demotodayvalue;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,12 +16,20 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.promoteprovider.demotodayvalue.Fragments.HomeFragment;
 import com.promoteprovider.demotodayvalue.Fragments.MessageFragment;
 import com.promoteprovider.demotodayvalue.Fragments.PodcastFragment;
@@ -53,17 +62,26 @@ public class MainActivity extends AppCompatActivity {
 
     //firebase
     FirebaseUser firebaseUser;
+    FirebaseAuth auth;
+    FirebaseFirestore firestore;
+    String userId;
+
+    //header
+    TextView profile_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //firebase start
+        auth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+//        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+//            if (firebaseUser == null){
+//                Toast.makeText(MainActivity.this, "If You Want To Like or Comment And Upload Something Please Sign Up", Toast.LENGTH_SHORT).show();
+//            }
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-            if (firebaseUser == null){
-                Toast.makeText(MainActivity.this, "If You Want To Like or Comment And Upload Something Please Sign Up", Toast.LENGTH_SHORT).show();
-            }
-
+        //firebase end
 
         toolBar = findViewById(R.id.toolBar);
         DrNavigation = findViewById(R.id.DrNavigation);
@@ -132,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         });
         //Change Header
         View view = DrNavigation.getHeaderView(0);
-
+         profile_name = view.findViewById(R.id.profile_name);
         header = view.findViewById(R.id.header);
         header.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +160,9 @@ public class MainActivity extends AppCompatActivity {
               startActivity(intent);
             }
         });
+
+
+
 
 
         // start navigation All Code do note delete any code

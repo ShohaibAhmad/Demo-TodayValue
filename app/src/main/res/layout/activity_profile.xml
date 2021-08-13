@@ -57,6 +57,38 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <ImageView
+                    android:id="@+id/editProfile"
+                    android:layout_width="50dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/view"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/main_color"
+                    diagonal:srcCompat="@drawable/ic_baseline_edit_24" />
+
+                <ImageView
+                    android:id="@+id/settingBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="45dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/view"
+                    app:layout_constraintEnd_toEndOf="@+id/view"
+                    app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+                    app:tint="@color/main_color"
+                    diagonal:srcCompat="@drawable/ic_baseline_settings_24" />
+
+                <View
+                    android:id="@+id/view"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:background="@color/greyTrans"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_image"
                     android:layout_width="100dp"
@@ -78,18 +110,17 @@
                     app:layout_constraintEnd_toEndOf="@+id/profile_image"
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintStart_toStartOf="@+id/profile_image"
-                    diagonal:srcCompat="@drawable/checked"
-                    app:tint="@color/main_color" />
+                    app:tint="@color/main_color"
+                    diagonal:srcCompat="@drawable/checked" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/profile_name_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="Shohaib Ahmad"
                 android:textColor="@color/main_color"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -173,13 +204,13 @@
                         android:id="@+id/linearLayout2"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         android:orientation="horizontal"
                         android:weightSum="2"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
-                      >
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <Button
                             android:id="@+id/dataSend"
@@ -236,7 +267,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="Video"
+                                    android:text="Post"
                                     android:textColor="@color/main_color"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
