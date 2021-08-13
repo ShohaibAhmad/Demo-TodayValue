@@ -17,6 +17,8 @@
 
 
         </activity>
+        <activity android:name=".Otp_Number"
+            android:exported="true"/>
         <activity
 
             android:name=".UploadActivity"

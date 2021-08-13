@@ -32,7 +32,7 @@ public class manageotp extends AppCompatActivity
     String otpid;
     FirebaseAuth mAuth;
     ProgressBar otpV;
-    TextView timer;
+    TextView timer,resendOTP;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -44,6 +44,7 @@ public class manageotp extends AppCompatActivity
         b2= findViewById(R.id.otpSend);
         otpV= findViewById(R.id.otpV);
         timer= findViewById(R.id.timer);
+        resendOTP= findViewById(R.id.resendOTP);
         mAuth=FirebaseAuth.getInstance();
 
         new CountDownTimer(60000, 1000) {
@@ -56,6 +57,48 @@ public class manageotp extends AppCompatActivity
                 timer.setText("done!");
             }
         }.start();
+
+
+        resendOTP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                        phonenumber,        // Phone number to verify
+                        60,                 // Timeout duration
+                        TimeUnit.SECONDS,   // Unit of timeout
+                        manageotp.this,               // Activity (for callback binding)
+                        new PhoneAuthProvider.OnVerificationStateChangedCallbacks()
+                        {
+                            @Override
+                            public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken)
+                            {
+                                otpid=s;
+                            }
+
+                            @Override
+                            public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential)
+                            {
+                                signInWithPhoneAuthCredential(phoneAuthCredential);
+                            }
+
+                            @Override
+                            public void onVerificationFailed(FirebaseException e) {
+                                Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
+                            }
+                        }); // OnVerificationStateChangedCallbacks
+                new CountDownTimer(60000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        timer.setText("Wait For OTP Code: " + millisUntilFinished / 1000);
+                    }
+
+                    public void onFinish() {
+                        timer.setText("done!");
+                    }
+                }.start();
+
+            }
+        });
 
         initiateotp();
 
