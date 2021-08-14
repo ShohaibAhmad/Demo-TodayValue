@@ -6,11 +6,14 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -20,8 +23,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -61,25 +66,24 @@ public class MainActivity extends AppCompatActivity {
     ConstraintLayout header;
 
     //firebase
-    FirebaseUser firebaseUser;
     FirebaseAuth auth;
     FirebaseFirestore firestore;
     String userId;
 
     //header
-    TextView profile_name;
-
+     TextView profile_name;
+     //permission
+        private String permission[] = {Manifest.permission.READ_EXTERNAL_STORAGE};
+        private int PRCode = 200;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //permission
+        requestPermission();
         //firebase start
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-//        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-//            if (firebaseUser == null){
-//                Toast.makeText(MainActivity.this, "If You Want To Like or Comment And Upload Something Please Sign Up", Toast.LENGTH_SHORT).show();
-//            }
 
         //firebase end
 
@@ -160,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
               startActivity(intent);
             }
         });
-
 
 
 
@@ -247,6 +250,11 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
             super.onBackPressed();
+        }
+    }
+    public void requestPermission(){
+        if (ActivityCompat.checkSelfPermission(this,permission[0]) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.this,permission,PRCode);
         }
     }
 }

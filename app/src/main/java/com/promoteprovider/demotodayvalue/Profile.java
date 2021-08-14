@@ -9,15 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Profile extends AppCompatActivity {
     LinearLayout goToWid;
@@ -33,9 +25,6 @@ public class Profile extends AppCompatActivity {
         settingBtn = findViewById(R.id.settingBtn);
         editProfile = findViewById(R.id.editProfile);
         profile_name_main = findViewById(R.id.profile_name_main);
-
-
-
 
 
         goToWid.setOnClickListener(new View.OnClickListener() {
