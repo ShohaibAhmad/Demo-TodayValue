@@ -1,20 +1,12 @@
 package com.promoteprovider.demotodayvalue.utils;
 
-import static com.google.android.material.internal.ContextUtils.getActivity;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.content.ContextCompat;
-
-import com.google.android.material.snackbar.Snackbar;
 import com.promoteprovider.demotodayvalue.R;
 
 public class Util {

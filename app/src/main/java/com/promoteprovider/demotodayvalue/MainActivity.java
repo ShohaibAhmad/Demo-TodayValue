@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -40,6 +41,7 @@ import com.promoteprovider.demotodayvalue.Fragments.MessageFragment;
 import com.promoteprovider.demotodayvalue.Fragments.PodcastFragment;
 import com.promoteprovider.demotodayvalue.Fragments.Short_VideoFragment;
 import com.promoteprovider.demotodayvalue.Fragments.VideoFragment;
+import com.promoteprovider.demotodayvalue.Storages.MySharedPreferences;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -68,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
     //firebase
     FirebaseAuth auth;
     FirebaseFirestore firestore;
-    String userId;
+
+    //sharepre
+    private MySharedPreferences sp;
 
     //header
      TextView profile_name;
@@ -79,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sp = MySharedPreferences.getInstance(this);
         //permission
         requestPermission();
         //firebase start

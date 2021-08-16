@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.promoteprovider.demotodayvalue.Storages.MySharedPreferences;
 import com.promoteprovider.demotodayvalue.utils.Util;
 
 public class LogIn extends AppCompatActivity {
@@ -29,13 +30,15 @@ public class LogIn extends AppCompatActivity {
     TextView FP;
     //alert
     private AlertDialog dialog;
-    ConstraintLayout loginp;
+    private MySharedPreferences sp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
         //alert
         dialog = Util.getAlertDialog(this,"LogIn Loading...");
+        sp = MySharedPreferences.getInstance(this);
         //Auth
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null){
@@ -47,7 +50,6 @@ public class LogIn extends AppCompatActivity {
         TextView login=findViewById(R.id.login);
         email=findViewById(R.id.email);
         pass=findViewById(R.id.pass);
-        loginp=findViewById(R.id.loginp);
         TextView NewAccount=findViewById(R.id.NewAccount);
         FP = findViewById(R.id.resetBtn);
 
@@ -81,6 +83,8 @@ public class LogIn extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         dialog.dismiss();
                         if (task.isSuccessful()){
+                            sp.setLogin("2");
+                            sp.setUserId(auth.getUid());
                             Toast.makeText(LogIn.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                             Intent intent=new Intent(LogIn.this,MainActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

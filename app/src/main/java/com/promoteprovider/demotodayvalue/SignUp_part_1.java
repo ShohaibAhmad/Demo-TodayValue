@@ -20,6 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.promoteprovider.demotodayvalue.Storages.MySharedPreferences;
 import com.promoteprovider.demotodayvalue.utils.Util;
 
 import java.util.HashMap;
@@ -40,6 +41,7 @@ public class SignUp_part_1 extends AppCompatActivity {
 
     //alert
     private AlertDialog dialog;
+    private MySharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class SignUp_part_1 extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up_part1);
         //alert
         dialog = Util.getAlertDialog(this,"SignUp Loading...");
+        sp =  MySharedPreferences.getInstance(this);
         //firebase init
         auth = FirebaseAuth.getInstance();
         collectionReference = FirebaseFirestore.getInstance().collection("users");
@@ -131,6 +134,8 @@ public class SignUp_part_1 extends AppCompatActivity {
                 }
                 else
                 {
+                    sp.setLogin("2");
+                    sp.setUserId(auth.getUid());
                     Toast.makeText(getApplicationContext(), "SignUp Successfully!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUp_part_1.this,MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
