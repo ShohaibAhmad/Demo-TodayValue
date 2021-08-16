@@ -1,6 +1,7 @@
 package com.promoteprovider.demotodayvalue;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.promoteprovider.demotodayvalue.utils.Util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,25 +32,26 @@ public class SignUp_part_1 extends AppCompatActivity {
     //auth
     EditText LastName,FirstName,dBirth,email,pass;
     String namef,namel,birth,emails,passw;
-    ProgressBar progressBar2;
     TextView dataSend;
 
     //firebase
     private FirebaseAuth auth;
     private CollectionReference collectionReference;
 
+    //alert
+    private AlertDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_part1);
-
+        //alert
+        dialog = Util.getAlertDialog(this,"SignUp Loading...");
         //firebase init
         auth = FirebaseAuth.getInstance();
         collectionReference = FirebaseFirestore.getInstance().collection("users");
 
         //find
-            progressBar2 = findViewById(R.id.progressBar2);
             FirstName =findViewById(R.id.fName);
             LastName = findViewById(R.id.lName);
             dBirth = findViewById(R.id.dBirth);
@@ -64,7 +67,6 @@ public class SignUp_part_1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 checkDataAndLogin();
-                progressBar2.setVisibility(View.VISIBLE);
             }
         });
 
@@ -92,10 +94,12 @@ public class SignUp_part_1 extends AppCompatActivity {
 
         else
             {
+                dialog.show();
                 auth.createUserWithEmailAndPassword(emails,passw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()){
+                            dialog.dismiss();
                             Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage() , Toast.LENGTH_SHORT).show();
                         }
                         else
@@ -120,6 +124,7 @@ public class SignUp_part_1 extends AppCompatActivity {
         collectionReference.document(auth.getUid()).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                dialog.dismiss();
                 if (!task.isSuccessful())
                 {
                     Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();

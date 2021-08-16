@@ -2,6 +2,7 @@ package com.promoteprovider.demotodayvalue;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.promoteprovider.demotodayvalue.utils.Util;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -45,10 +47,14 @@ public class EditProfile extends AppCompatActivity {
     private CollectionReference collectionReference;
     private StorageReference storageReference;
     private String mUserId;
+    //alert
+    private AlertDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        //alert
+        dialog = Util.getAlertDialog(this,"Update Loading...");
         //firebase
         auth = FirebaseAuth.getInstance();
         collectionReference = FirebaseFirestore.getInstance().collection("users");
@@ -106,6 +112,7 @@ public class EditProfile extends AppCompatActivity {
     }
 
     private void uploadImage(String about) {
+        dialog.show();
         UploadTask task = storageReference.child(mUserId).putFile(pUri);
         task.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -121,6 +128,7 @@ public class EditProfile extends AppCompatActivity {
                 }
                 else
                 {
+                    dialog.dismiss();
                     Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -135,8 +143,12 @@ public class EditProfile extends AppCompatActivity {
         collectionReference.document(mUserId).update(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+                dialog.dismiss();
                 if (task.isSuccessful()){
                     Toast.makeText(getApplicationContext(), "Profile Info Saved", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(EditProfile.this,Profile.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 }
                 else {
                     Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();

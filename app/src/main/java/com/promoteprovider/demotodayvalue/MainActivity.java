@@ -160,8 +160,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 DR_Main.closeDrawer(GravityCompat.END);
-              Intent intent = new Intent(MainActivity.this,Profile.class);
-              startActivity(intent);
+                if (auth.getCurrentUser() != null){
+                    Intent intent = new Intent(MainActivity.this,Profile.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 
