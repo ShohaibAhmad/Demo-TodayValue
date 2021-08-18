@@ -56,6 +56,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="14dp"
+            android:text="Shohaib Ahmad"
             android:textColor="@color/main_color"
             android:textSize="20sp"
             android:textStyle="bold"
