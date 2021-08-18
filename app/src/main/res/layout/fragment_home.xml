@@ -67,7 +67,7 @@
             android:layout_height="0dp"
             android:gravity="center"
             android:text="Upload Video/Audio/Short/Post"
-            android:textColor="@color/white"
+            android:textColor="#B2FFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/vi"
             app:layout_constraintEnd_toEndOf="@+id/vi"
             app:layout_constraintStart_toStartOf="@+id/vi"

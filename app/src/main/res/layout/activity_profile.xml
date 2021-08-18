@@ -48,9 +48,10 @@
                         diagonal:diagonal_position="bottom">
 
                         <ImageView
+                            android:id="@+id/Cover_Image"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:scaleType="fitXY"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/cover" />
 
                     </com.github.florent37.diagonallayout.DiagonalLayout>
@@ -62,7 +63,7 @@
                     android:layout_width="50dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/view"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewEdit"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:tint="@color/main_color"
@@ -73,14 +74,14 @@
                     android:layout_width="50dp"
                     android:layout_height="45dp"
                     android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/view"
-                    app:layout_constraintEnd_toEndOf="@+id/view"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewEdit"
+                    app:layout_constraintEnd_toEndOf="@+id/viewEdit"
                     app:layout_constraintTop_toTopOf="@+id/constraintLayout"
                     app:tint="@color/main_color"
                     diagonal:srcCompat="@drawable/ic_baseline_settings_24" />
 
                 <View
-                    android:id="@+id/view"
+                    android:id="@+id/viewEdit"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:background="@color/greyTrans"
@@ -126,7 +127,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/BIO"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

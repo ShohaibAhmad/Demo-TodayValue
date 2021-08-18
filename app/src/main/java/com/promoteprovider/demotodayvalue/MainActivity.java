@@ -15,10 +15,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,12 +38,15 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.promoteprovider.demotodayvalue.Fragments.HomeFragment;
 import com.promoteprovider.demotodayvalue.Fragments.MessageFragment;
 import com.promoteprovider.demotodayvalue.Fragments.PodcastFragment;
 import com.promoteprovider.demotodayvalue.Fragments.Short_VideoFragment;
 import com.promoteprovider.demotodayvalue.Fragments.VideoFragment;
 import com.promoteprovider.demotodayvalue.Storages.MySharedPreferences;
+import com.squareup.picasso.Picasso;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -70,12 +75,20 @@ public class MainActivity extends AppCompatActivity {
     //firebase
     FirebaseAuth auth;
     FirebaseFirestore firestore;
+    String userId;
+    // save data
+    private Uri imageUri;
+    private static final int PICK_IMAGE = 1;
+    UploadTask uploadTask;
+    StorageReference storageReference;
+    DocumentReference documentReference;
 
     //sharepre
     private MySharedPreferences sp;
 
     //header
      TextView profile_name;
+     ImageView profile_image;
      //permission
         private String permission[] = {Manifest.permission.READ_EXTERNAL_STORAGE};
         private int PRCode = 200;
@@ -89,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         //firebase start
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
+        userId = auth.getUid();
         //firebase end
 
         toolBar = findViewById(R.id.toolBar);
@@ -161,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
         View view = DrNavigation.getHeaderView(0);
          profile_name = view.findViewById(R.id.profile_name);
         header = view.findViewById(R.id.header);
+        profile_image = view.findViewById(R.id.profile_image);
         header.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -170,10 +184,48 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+                else {
+                    Intent intent = new Intent(MainActivity.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
 
+        if (auth.getCurrentUser() != null) {
+            // get user Data
+            DocumentReference documentReference = firestore.collection("users").document(userId);
+            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                    profile_name.setText(documentSnapshot.getString("FirstName") + " " + documentSnapshot.getString("LastName"));
 
+                }
+            });
+            // get image
+            documentReference.get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.getResult().exists()){
+                                String uri = task.getResult().getString("Profile_Image");
+                                Picasso.get().load(uri).into(profile_image);
+
+                            }
+                            else
+                            {
+                                Toast.makeText(MainActivity.this, "No Profile", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    })
+
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+        }
 
 
         // start navigation All Code do note delete any code
