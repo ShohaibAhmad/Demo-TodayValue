@@ -26,6 +26,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    buildFeatures{
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -60,6 +64,14 @@ dependencies {
     implementation "com.airbnb.android:lottie:4.0.0"
     //crop
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.4.0'
+
+    //scalbale size unit
+    implementation'com.intuit.sdp:sdp-android:1.0.6'
+    implementation'com.intuit.ssp:ssp-android:1.0.6'
+
+    //round imageview
+
+    implementation'com.makeramen:roundedimageview:2.3.0'
 
 
 }
