@@ -13,6 +13,7 @@ public class Util {
 
 
 
+
     public static AlertDialog getAlertDialog(Activity activity,String message){
             AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         View view = LayoutInflater.from(activity).inflate(R.layout.custom_prod,null,false);
