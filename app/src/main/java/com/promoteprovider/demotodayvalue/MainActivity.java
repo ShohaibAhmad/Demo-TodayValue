@@ -141,21 +141,31 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.video:
                         transaction.replace(R.id.Main_Container,new VideoFragment());
                         Toast.makeText(MainActivity.this, "Videos", Toast.LENGTH_SHORT).show();
+                        meowBottomNavigation.show(VIDEO_ID,true);
+                        break;
+
+                    case R.id.home:
+                        transaction.replace(R.id.Main_Container,new HomeFragment());
+                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                        meowBottomNavigation.show(HOME_ID,true);
                         break;
 
                     case R.id.message:
                         transaction.replace(R.id.Main_Container,new MessageFragment());
                         Toast.makeText(MainActivity.this, "Message", Toast.LENGTH_SHORT).show();
+                        meowBottomNavigation.show(MESSAGE_ID,true);
                         break;
 
                     case R.id.podcast:
                         transaction.replace(R.id.Main_Container,new PodcastFragment());
                         Toast.makeText(MainActivity.this, "Podcast", Toast.LENGTH_SHORT).show();
+                        meowBottomNavigation.show(PODCAST_ID,true);
                         break;
 
                     case R.id.short_video:
                         transaction.replace(R.id.Main_Container,new Short_VideoFragment());
                         Toast.makeText(MainActivity.this, "Short Videos", Toast.LENGTH_SHORT).show();
+                        meowBottomNavigation.show(SHORT_ID,true);
                         break; 
                         
                     case R.id.logout:

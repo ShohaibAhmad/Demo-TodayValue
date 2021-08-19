@@ -46,8 +46,18 @@
                     app:layout_constraintEnd_toEndOf="@+id/cover"
                     app:layout_constraintStart_toStartOf="@+id/cover"
                     app:layout_constraintTop_toTopOf="parent"
-                    diagonal:civ_border_color="@color/white"
+                    diagonal:civ_border_color="@color/main_color"
                     diagonal:civ_border_width="3dp" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+                    app:layout_constraintEnd_toEndOf="@+id/profile_image"
+                    app:layout_constraintStart_toStartOf="@+id/profile_image"
+                    app:layout_constraintTop_toTopOf="@+id/profile_image"
+                    diagonal:srcCompat="@drawable/ic_baseline_edit_24" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
@@ -137,6 +147,19 @@
 
                 <TextView
                     android:id="@+id/updateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/border_style_2"
+                    android:padding="15dp"
+                    android:text="UPLOAD FULL DATA"
+                    android:visibility="gone"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/updateProfile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
