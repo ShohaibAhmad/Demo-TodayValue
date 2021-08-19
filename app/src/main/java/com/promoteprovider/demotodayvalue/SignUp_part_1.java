@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.promoteprovider.demotodayvalue.Storages.MySharedPreferences;
+import com.promoteprovider.demotodayvalue.utils.Constants;
+import com.promoteprovider.demotodayvalue.utils.PreferenceManager;
 import com.promoteprovider.demotodayvalue.utils.Util;
 
 import java.util.HashMap;
@@ -38,15 +40,18 @@ public class SignUp_part_1 extends AppCompatActivity {
     //firebase
     private FirebaseAuth auth;
     private CollectionReference collectionReference;
+    private PreferenceManager preferenceManager;
 
     //alert
     private AlertDialog dialog;
     private MySharedPreferences sp;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_part1);
+        preferenceManager = new PreferenceManager(getApplicationContext());
         //alert
         dialog = Util.getAlertDialog(this,"SignUp Loading...");
         sp =  MySharedPreferences.getInstance(this);
@@ -117,12 +122,12 @@ public class SignUp_part_1 extends AppCompatActivity {
         //save User Data
     private void saveUser() {
         Map<String,String> map = new HashMap<>();
-        map.put("FirstName",namef);
-        map.put("LastName",namel);
+        map.put(Constants.KEY_FirstName,namef);
+        map.put(Constants.KEY_LastName,namel);
         map.put("dBirth",birth);
-        map.put("Email",emails);
-        map.put("Password",passw);
-        map.put("userId",auth.getUid());
+        map.put(Constants.KEY_Email,emails);
+        map.put(Constants.KEY_Password,passw);
+        map.put(Constants.KEY_UserId,auth.getUid());
         //add data
         collectionReference.document(auth.getUid()).set(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -130,14 +135,19 @@ public class SignUp_part_1 extends AppCompatActivity {
                 dialog.dismiss();
                 if (!task.isSuccessful())
                 {
+
                     Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
+                    preferenceManager.puBoolean(Constants.KEY_Is_Signed_In,true);
+                    preferenceManager.putString(Constants.KEY_UserId,collectionReference.getId());
+                    preferenceManager.putString(Constants.KEY_FirstName,namef);
+                    preferenceManager.putString(Constants.KEY_LastName,namel);
                     sp.setLogin("2");
                     sp.setUserId(auth.getUid());
                     Toast.makeText(getApplicationContext(), "SignUp Successfully!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignUp_part_1.this,MainActivity.class);
+                    Intent intent = new Intent(SignUp_part_1.this,EditProfile.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }

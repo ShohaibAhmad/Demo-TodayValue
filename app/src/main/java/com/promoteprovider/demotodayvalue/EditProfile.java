@@ -33,6 +33,8 @@ import com.google.firebase.firestore.Transaction;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.promoteprovider.demotodayvalue.utils.Constants;
+import com.promoteprovider.demotodayvalue.utils.PreferenceManager;
 import com.promoteprovider.demotodayvalue.utils.Util;
 
 import com.squareup.picasso.Picasso;
@@ -67,10 +69,12 @@ public class EditProfile extends AppCompatActivity {
     String userId;
     //alert
     private AlertDialog dialog;
+    private PreferenceManager preferenceManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        preferenceManager = new PreferenceManager(getApplicationContext());
         //alert
         dialog = Util.getAlertDialog(this,"Update Loading...");
         //firebase
@@ -233,6 +237,11 @@ public class EditProfile extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Void unused) {
                                                 dialog.show();
+                                                preferenceManager.puBoolean(Constants.KEY_Is_Signed_In,true);
+                                                preferenceManager.putString(Constants.KEY_UserId,documentReference.getId());
+                                                preferenceManager.putString(Constants.KEY_FirstName,fName);
+                                                preferenceManager.putString(Constants.KEY_LastName,lName);
+                                                preferenceManager.putString(Constants.KEY_Image,downloadUri.toString());
                                                 Toast.makeText(EditProfile.this, "Profile Updated Successfully!", Toast.LENGTH_SHORT).show();
                                                 Intent intent = new Intent(EditProfile.this,Profile.class);
                                                 startActivity(intent);

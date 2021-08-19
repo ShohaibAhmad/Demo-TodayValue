@@ -38,6 +38,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.promoteprovider.demotodayvalue.Fragments.HomeFragment;
@@ -46,6 +47,9 @@ import com.promoteprovider.demotodayvalue.Fragments.PodcastFragment;
 import com.promoteprovider.demotodayvalue.Fragments.Short_VideoFragment;
 import com.promoteprovider.demotodayvalue.Fragments.VideoFragment;
 import com.promoteprovider.demotodayvalue.Storages.MySharedPreferences;
+import com.promoteprovider.demotodayvalue.databinding.ActivityMainBinding;
+import com.promoteprovider.demotodayvalue.utils.Constants;
+import com.promoteprovider.demotodayvalue.utils.PreferenceManager;
 import com.squareup.picasso.Picasso;
 
 import kotlin.Unit;
@@ -151,9 +155,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.message:
-                        transaction.replace(R.id.Main_Container,new MessageFragment());
+//                        transaction.replace(R.id.Main_Container,new MessageFragment());
+                        Intent intent1 = new Intent(MainActivity.this,User_Activity.class);
+                        startActivity(intent1);
                         Toast.makeText(MainActivity.this, "Message", Toast.LENGTH_SHORT).show();
-                        meowBottomNavigation.show(MESSAGE_ID,true);
                         break;
 
                     case R.id.podcast:
@@ -288,8 +293,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case MESSAGE_ID:
-                        transaction1.replace(R.id.Main_Container,new MessageFragment());
-                        Toast.makeText(MainActivity.this, "Chat", Toast.LENGTH_SHORT).show();
+//                        transaction1.replace(R.id.Main_Container,new MessageFragment());
+//                        Toast.makeText(MainActivity.this, "Chat", Toast.LENGTH_SHORT).show();
+                        Intent intent1 = new Intent(MainActivity.this,User_Activity.class);
+                        startActivity(intent1);
+                        Toast.makeText(MainActivity.this, "Message", Toast.LENGTH_SHORT).show();
                         break;
 
                     case PODCAST_ID:
@@ -327,4 +335,5 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this,permission,PRCode);
         }
     }
+
 }

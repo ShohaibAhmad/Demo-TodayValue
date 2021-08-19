@@ -21,6 +21,7 @@
         app:tint="@color/white"/>
 
     <TextView
+        android:id="@+id/profile_name_chat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Friends"
@@ -30,7 +31,20 @@
         app:layout_constraintBottom_toBottomOf="@id/imageBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/imageBack"/>
+        app:layout_constraintTop_toTopOf="@id/imageBack" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/profile"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_name_chat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profile_name_chat" />
+
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -46,17 +60,18 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:orientation="vertical"
+        tools:listitem="@layout/item_container_user"
         android:overScrollMode="never"
         android:padding="@dimen/_20sdp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-    <ProgressBar
-        android:id="@+id/progressBAr"
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="@dimen/_25sdp"
-        android:layout_gravity="center"
-        />
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progressBAr"-->
+<!--        android:layout_width="@dimen/_25sdp"-->
+<!--        android:layout_height="@dimen/_25sdp"-->
+<!--        android:layout_gravity="center"-->
+<!--        />-->
 
         <TextView
             android:id="@+id/textErrorMessage"

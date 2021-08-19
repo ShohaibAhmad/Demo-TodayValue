@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="@dimen/_8sdp">
 
@@ -30,18 +30,29 @@
 
     <TextView
         android:id="@+id/textName"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginStart="6dp"
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="#15205E"
         android:textSize="@dimen/_13ssp"
-        app:layout_constraintBottom_toTopOf="@id/viewSupporter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageProfile"/>
+        app:layout_constraintBottom_toTopOf="@+id/textEmail"
+        app:layout_constraintStart_toEndOf="@id/imageProfile"
+        app:layout_constraintTop_toTopOf="@+id/imageProfile" />
 
+    <TextView
+        android:id="@+id/textName1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="#15205E"
+        android:textSize="@dimen/_13ssp"
+        app:layout_constraintBottom_toTopOf="@+id/textEmail"
+        app:layout_constraintStart_toEndOf="@+id/textName"
+        app:layout_constraintTop_toTopOf="@+id/imageProfile" />
 
 
     <TextView
@@ -49,14 +60,16 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:ellipsize="end"
         android:maxLines="1"
         android:textColor="#15205E"
         android:textSize="@dimen/_10ssp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/viewSupporter"
-        app:layout_constraintTop_toBottomOf="@id/viewSupporter"/>
+        app:layout_constraintTop_toBottomOf="@+id/viewSupporter" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
