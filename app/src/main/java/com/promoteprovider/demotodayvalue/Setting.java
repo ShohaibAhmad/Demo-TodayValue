@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -20,10 +23,13 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.promoteprovider.demotodayvalue.utils.Util;
+import com.squareup.picasso.Picasso;
 
 import java.util.concurrent.atomic.AtomicMarkableReference;
 
@@ -32,8 +38,12 @@ public class Setting extends AppCompatActivity {
     LinearLayout dBtn,pdBtn;
     DocumentReference documentReference;
     FirebaseFirestore firestore;
+    private Uri imageUri;
     FirebaseAuth auth;
     String userId;
+    String url;
+    StorageReference storageReference;
+
     //alert
     private AlertDialog dialog;
     @Override
@@ -46,6 +56,29 @@ public class Setting extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         userId = auth.getUid();
+
+        DocumentReference documentReference = firestore.collection("users").document(userId);
+        // get image
+        documentReference.get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.getResult().exists()) {
+                            url = task.getResult().getString("Profile_Image");
+
+
+                        } else {
+                            Toast.makeText(Setting.this, "No Profile", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
 
         //click to delete
         dBtn.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +96,6 @@ public class Setting extends AppCompatActivity {
             }
         });
     }
-
     private void DeleteProfile() {
         ShowDialog();
 
@@ -82,15 +114,22 @@ public class Setting extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-
+                                StorageReference storageReference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
+                                storageReference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        Toast.makeText(Setting.this, "Profile Image Deleted", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-
+                                Toast.makeText(Setting.this, "No Delete", Toast.LENGTH_SHORT).show();
                             }
                         });
+
                 auth.getCurrentUser().delete()
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -107,6 +146,8 @@ public class Setting extends AppCompatActivity {
                                 Toast.makeText(Setting.this, "Fail to delete account", Toast.LENGTH_SHORT).show();
                             }
                         });
+
+
             }
         });
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

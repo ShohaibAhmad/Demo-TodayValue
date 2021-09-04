@@ -54,6 +54,7 @@ public class HomeFragment extends Fragment {
         firebaseFirestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         userId = auth.getUid();
+
         if (auth.getCurrentUser() != null) {
             DocumentReference documentReference = firebaseFirestore.collection("users").document(userId);
             // get image
@@ -78,6 +79,8 @@ public class HomeFragment extends Fragment {
                         }
                     });
         }
+
+
         mainLayout.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {

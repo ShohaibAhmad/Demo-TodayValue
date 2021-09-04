@@ -60,7 +60,7 @@ public class EditProfile extends AppCompatActivity {
     //request
     private int request_code = 100;
     // save data
-    private Uri imageUri;
+    public Uri imageUri;
     private static final int PICK_IMAGE = 1;
     UploadTask uploadTask;
     private String encodedImage;
