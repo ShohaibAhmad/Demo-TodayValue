@@ -49,15 +49,22 @@
                     diagonal:civ_border_color="@color/main_color"
                     diagonal:civ_border_width="3dp" />
 
-                <ImageView
-                    android:id="@+id/imageView5"
+                <TextView
+                    android:id="@+id/addImage"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
+                    android:text="Add Image"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/profile_image"
                     app:layout_constraintEnd_toEndOf="@+id/profile_image"
                     app:layout_constraintStart_toStartOf="@+id/profile_image"
                     app:layout_constraintTop_toTopOf="@+id/profile_image"
                     diagonal:srcCompat="@drawable/ic_baseline_edit_24" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout

@@ -66,6 +66,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:mbn_backgroundBottomColor="@color/white"
         app:mbn_circleColor="@color/white"
+        app:itemIconTint="@color/main_color"
         app:mbn_defaultIconColor="@color/main_color"
         app:mbn_selectedIconColor="@color/main_color"
         app:mbn_shadowColor="@color/main_color" />

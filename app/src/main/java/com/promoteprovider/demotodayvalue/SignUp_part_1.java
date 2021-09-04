@@ -9,12 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,7 +20,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.promoteprovider.demotodayvalue.Storages.MySharedPreferences;
 import com.promoteprovider.demotodayvalue.utils.Constants;
-import com.promoteprovider.demotodayvalue.utils.PreferenceManager;
 import com.promoteprovider.demotodayvalue.utils.Util;
 
 import java.util.HashMap;
@@ -40,7 +37,6 @@ public class SignUp_part_1 extends AppCompatActivity {
     //firebase
     private FirebaseAuth auth;
     private CollectionReference collectionReference;
-    private PreferenceManager preferenceManager;
 
     //alert
     private AlertDialog dialog;
@@ -51,7 +47,6 @@ public class SignUp_part_1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_part1);
-        preferenceManager = new PreferenceManager(getApplicationContext());
         //alert
         dialog = Util.getAlertDialog(this,"SignUp Loading...");
         sp =  MySharedPreferences.getInstance(this);
@@ -140,10 +135,6 @@ public class SignUp_part_1 extends AppCompatActivity {
                 }
                 else
                 {
-                    preferenceManager.puBoolean(Constants.KEY_Is_Signed_In,true);
-                    preferenceManager.putString(Constants.KEY_UserId,collectionReference.getId());
-                    preferenceManager.putString(Constants.KEY_FirstName,namef);
-                    preferenceManager.putString(Constants.KEY_LastName,namel);
                     sp.setLogin("2");
                     sp.setUserId(auth.getUid());
                     Toast.makeText(getApplicationContext(), "SignUp Successfully!", Toast.LENGTH_SHORT).show();

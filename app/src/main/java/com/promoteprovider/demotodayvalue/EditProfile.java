@@ -1,15 +1,20 @@
 package com.promoteprovider.demotodayvalue;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -24,7 +29,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,13 +38,13 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.promoteprovider.demotodayvalue.utils.Constants;
-import com.promoteprovider.demotodayvalue.utils.PreferenceManager;
 import com.promoteprovider.demotodayvalue.utils.Util;
 
 import com.squareup.picasso.Picasso;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,13 +56,14 @@ public class EditProfile extends AppCompatActivity {
     EditText bio,LastName,FirstName,dBirth,email,pass;;
     ImageView cover;
     CircleImageView profile_image;
-    TextView updateBtn,updateProfile;
+    TextView updateBtn,updateProfile,addImage;
     //request
     private int request_code = 100;
     // save data
     private Uri imageUri;
     private static final int PICK_IMAGE = 1;
     UploadTask uploadTask;
+    private String encodedImage;
 
     //fiebase
     private FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -69,12 +74,10 @@ public class EditProfile extends AppCompatActivity {
     String userId;
     //alert
     private AlertDialog dialog;
-    private PreferenceManager preferenceManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-        preferenceManager = new PreferenceManager(getApplicationContext());
         //alert
         dialog = Util.getAlertDialog(this,"Update Loading...");
         //firebase
@@ -94,19 +97,27 @@ public class EditProfile extends AppCompatActivity {
         profile_image = findViewById(R.id.profile_image);
         updateBtn = findViewById(R.id.updateBtn);
         updateProfile = findViewById(R.id.updateProfile);
+        addImage = findViewById(R.id.addImage);
 
         //change profile
         profile_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChoseImage();
+
+//                ChoseImage();
+               Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+               intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+               picImage.launch(intent);
             }
         });
         //change cover
         cover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ChoseImage();
+//                ChoseImage();
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                picImage.launch(intent);
             }
         });
 
@@ -171,25 +182,56 @@ public class EditProfile extends AppCompatActivity {
                 });
     }
 
-
-
-    public void ChoseImage() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,PICK_IMAGE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE || resultCode == RESULT_OK || data != null || data.getData() != null)
-        {
-            imageUri = data.getData();
-            Picasso.get().load(imageUri).into(profile_image);
-            Picasso.get().load(imageUri).into(cover);
+        private String encodedImage(Bitmap bitmap){
+        int previewWidth = 150;
+        int previewHeight = bitmap.getHeight() * previewWidth / bitmap.getWidth();
+        Bitmap previewBitmap = Bitmap.createScaledBitmap(bitmap,previewWidth,previewHeight,false);
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            previewBitmap.compress(Bitmap.CompressFormat.JPEG,50,byteArrayOutputStream);
+            byte[] bytes = byteArrayOutputStream.toByteArray();
+            return Base64.encodeToString(bytes,Base64.DEFAULT);
         }
-    }
+
+        private final ActivityResultLauncher<Intent> picImage = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result -> {
+                        if (result.getResultCode() == RESULT_OK){
+                            if (result.getData() != null){
+                                imageUri = result.getData().getData();
+                                try {
+                                    InputStream inputStream = getContentResolver().openInputStream(imageUri);
+                                    Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                                    profile_image.setImageBitmap(bitmap);
+                                    cover.setImageBitmap(bitmap);
+                                    addImage.setVisibility(View.GONE);
+                                    encodedImage = encodedImage(bitmap);
+
+                                }
+                                catch (FileNotFoundException e){
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                }
+        );
+
+//    public void ChoseImage() {
+//        Intent intent = new Intent();
+//        intent.setType("image/*");
+//        intent.setAction(Intent.ACTION_GET_CONTENT);
+//        startActivityForResult(intent,PICK_IMAGE);
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == PICK_IMAGE || resultCode == RESULT_OK || data != null || data.getData() != null)
+//        {
+//            imageUri = data.getData();
+//            Picasso.get().load(imageUri).into(profile_image);
+//            Picasso.get().load(imageUri).into(cover);
+//        }
+//    }
     private String getFileExt(Uri uri){
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
@@ -237,11 +279,6 @@ public class EditProfile extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Void unused) {
                                                 dialog.show();
-                                                preferenceManager.puBoolean(Constants.KEY_Is_Signed_In,true);
-                                                preferenceManager.putString(Constants.KEY_UserId,documentReference.getId());
-                                                preferenceManager.putString(Constants.KEY_FirstName,fName);
-                                                preferenceManager.putString(Constants.KEY_LastName,lName);
-                                                preferenceManager.putString(Constants.KEY_Image,downloadUri.toString());
                                                 Toast.makeText(EditProfile.this, "Profile Updated Successfully!", Toast.LENGTH_SHORT).show();
                                                 Intent intent = new Intent(EditProfile.this,Profile.class);
                                                 startActivity(intent);
