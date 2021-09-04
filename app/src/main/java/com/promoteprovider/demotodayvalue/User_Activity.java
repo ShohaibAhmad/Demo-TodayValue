@@ -3,6 +3,8 @@ package com.promoteprovider.demotodayvalue;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,40 +40,45 @@ public class User_Activity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
         userId = auth.getUid();
+        if (auth.getCurrentUser() != null) {
 // get user Data
-        storageReference = FirebaseStorage.getInstance().getReference("Profile_Images");
-        DocumentReference documentReference = firestore.collection("users").document(userId);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
-                binding.profileNameChat.setText(documentSnapshot.getString("FirstName") + " " + documentSnapshot.getString("LastName"));
+            storageReference = FirebaseStorage.getInstance().getReference("Profile_Images");
+            DocumentReference documentReference = firestore.collection("users").document(userId);
+            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
+                    binding.profileNameChat.setText(documentSnapshot.getString("FirstName") + " " + documentSnapshot.getString("LastName"));
 
 
-            }
-        });
-        // get image
-        documentReference.get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.getResult().exists()){
-                            String uri = task.getResult().getString("Profile_Image");
-                            Picasso.get().load(uri).into(binding.profileImage);
+                }
+            });
+            // get image
+            documentReference.get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.getResult().exists()) {
+                                String uri = task.getResult().getString("Profile_Image");
+                                Picasso.get().load(uri).into(binding.profileImage);
+                            } else {
+                                Toast.makeText(User_Activity.this, "No Profile", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else
-                        {
-                            Toast.makeText(User_Activity.this, "No Profile", Toast.LENGTH_SHORT).show();
+                    })
+
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
                         }
-                    }
-                })
-
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                    }
-                });
+                    });
             setListener();
+        }
+        else
+        {
+            Intent intent = new Intent(User_Activity.this,MainActivity.class);
+            startActivity(intent);
+        }
 
     }
 
