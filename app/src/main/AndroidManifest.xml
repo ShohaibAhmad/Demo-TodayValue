@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoTodayValue">
         <activity
+            android:name=".StoryActivity"
+            android:exported="true" />
+        <activity
             android:name=".Chat_activity"
             android:exported="true" />
         <activity

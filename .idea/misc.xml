@@ -6,9 +6,14 @@
         <entry key="..\:/Users/916916/AndroidStudioProjects/Demo-TodayValue2/app/src/main/res/layout/activity_profile.xml" value="0.2" />
         <entry key="..\:/Users/916916/AndroidStudioProjects/Demo-TodayValue2/app/src/main/res/layout/activity_reward.xml" value="0.21" />
         <entry key="..\:/Users/916916/AndroidStudioProjects/Demo-TodayValue2/app/src/main/res/layout/activity_withdraw.xml" value="0.19021739130434784" />
+        <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/drawable/background_content_bottom.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/drawable/border_style.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/drawable/border_style_2.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/drawable/border_style_3.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/drawable/border_style_4.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/drawable/edit_t.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/drawable/profile_wid.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/drawable/story_upload_btn.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/drawable/v_b_top.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/drawable/v_t_bac.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/activity_chat.xml" value="0.14855072463768115" />
@@ -24,12 +29,13 @@
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/activity_setting.xml" value="0.22" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/activity_sign_up_part1.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/activity_sign_up_part2.xml" value="0.21" />
+        <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/activity_story.xml" value="0.22" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/activity_upload.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/activity_user.xml" value="0.25" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/activity_welcome.xml" value="0.22" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/activity_withdraw.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/custom_prod.xml" value="0.16" />
-        <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/fragment_home.xml" value="0.5" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/fragment_home__main.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/fragment_message.xml" value="0.1" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/fragment_podcast.xml" value="0.1" />
@@ -38,6 +44,7 @@
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/fragment_video.xml" value="0.1" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/header_user.xml" value="0.33" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/item_container_user.xml" value="0.67" />
+        <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/layout/story_layout.xml" value="0.25" />
         <entry key="..\:/Users/shoha/AndroidStudioProjects/DemoTodayValue/app/src/main/res/menu/menu.xml" value="0.18645833333333334" />
       </map>
     </option>
